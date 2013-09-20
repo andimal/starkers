@@ -59,15 +59,22 @@
 	 * Add scripts via wp_head()
 	 *
 	 * @return void
-	 * @author Keir Whitaker
+	 * @author Keir Whitaker / Andy Richardson
 	 */
 
 	function starkers_script_enqueuer() {
-		wp_register_script( 'site', get_template_directory_uri().'/js/site.js', array( 'jquery' ) );
+		wp_register_script( 'preload', get_template_directory_uri().'/js/preload-min.js' );
+		wp_register_script( 'site', get_template_directory_uri().'/js/site.js', array(), '0.1.0', true );
+		wp_enqueue_script( 'preload' );
 		wp_enqueue_script( 'site' );
 
+		/* DEV */
+		wp_register_script( 'dev', get_template_directory_uri().'/_pp/js/site-dev.js', array(), '0.1.0', true );
+		wp_enqueue_script( 'dev' );
+		/* END DEV */
+
 		wp_register_style( 'screen', get_stylesheet_directory_uri().'/style.css', '', '', 'screen' );
-        wp_enqueue_style( 'screen' );
+    	wp_enqueue_style( 'screen' );
 	}	
 
 	/* ========================================================================================================================

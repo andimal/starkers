@@ -1,0 +1,32 @@
+@import "susy";
+
+$container-style	: fluid;
+$total-columns 		: 4;
+
+@mixin respond-to($media) {
+  
+  @if $media == 768 {
+    @include with-grid-settings(12, 43px, 20px, 16px) {
+      @media only screen and (min-width: 768px) {
+        @content;
+      }
+    }
+  }
+
+  @else if $media == 1024 {
+    @include with-grid-settings(12, 55px, 25px, 13px) {
+      @media only screen and (min-width: 1024px) {
+        @content;
+      }
+    }
+  }
+
+  @else if $media == 1280 {
+    @include with-grid-settings(12, 55px, 25px, 13.4375%) {
+      @media only screen and (min-width: 1280px) {
+        @content;
+      }
+    }
+  }
+
+}
